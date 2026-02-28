@@ -1,11 +1,18 @@
 /** @type {import('next').NextConfig} */
+const basePath = process.env.GITHUB_ACTIONS ? "/D2CheatSheet" : "";
 const nextConfig = {
-  // output: 'export' disabled for Docker/Node server; enable for static hosting (e.g. GitHub Pages)
-  images: {
-    unoptimized: true,
+  reactStrictMode: true,
+  // Expose basePath and static build flag to client
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+    NEXT_PUBLIC_STATIC_BUILD: process.env.GITHUB_ACTIONS ? "true" : "",
   },
-  // Preserve existing static assets
-  assetPrefix: process.env.NODE_ENV === 'production' ? '' : undefined,
+  ...(process.env.GITHUB_ACTIONS && {
+    output: "export",
+    basePath,
+    assetPrefix: `${basePath}/`,
+  }),
+  ...(!process.env.GITHUB_ACTIONS && { output: "standalone" }),
 };
 
 module.exports = nextConfig;
