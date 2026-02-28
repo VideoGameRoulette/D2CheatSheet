@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Expose CSS design tokens as Tailwind-compatible utilities */
+@layer utilities {
+  .text-heading   { color: var(--text-heading); }
+  .text-primary-d { color: var(--text-primary); }
+  .text-secondary-d { color: var(--text-secondary); }
+  .text-muted-d   { color: var(--text-muted); }
+  .bg-surface     { background-color: var(--bg-surface); }
+  .bg-raised      { background-color: var(--bg-raised); }
+  .bg-overlay     { background-color: var(--bg-overlay); }
+  .border-subtle  { border-color: var(--border-subtle); }
+  .border-muted-d { border-color: var(--border-muted); }
+  .border-default-d { border-color: var(--border-default); }
+  .accent         { color: var(--accent); }
+  .accent-bright  { color: var(--accent-bright); }
+  .alvl85-col     { color: var(--alvl85); }
+  .alvl84-col     { color: var(--alvl84); }
+  .alvl83-col     { color: var(--alvl83); }
+}

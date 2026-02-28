@@ -1,0 +1,36 @@
+# ── Dependencies ──────────────────────────────────────────────────────────────
+node_modules/
+frontend/node_modules/
+
+# ── Next.js build output ──────────────────────────────────────────────────────
+frontend/.next/
+frontend/out/
+
+# ── Yarn ──────────────────────────────────────────────────────────────────────
+# Keep .yarn/releases and .yarn/plugins (version-controlled by Yarn itself)
+# but ignore the cache (can be large and is fully reproducible)
+frontend/.yarn/cache/
+frontend/.yarn/install-state.gz
+
+# ── Environment / secrets ─────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# ── OS / editor noise ─────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
+*.swo
+
+# ── Docker / build artefacts ──────────────────────────────────────────────────
+# (docker-compose.yml and Caddyfile are intentionally tracked)
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+patch_hg.js
+patch_hg2.js
+gen_hg.js

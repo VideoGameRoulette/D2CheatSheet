@@ -1,0 +1,432 @@
+/* =========================================================
+   D2 Cheat Sheet — Design System
+   CSS variables + dark/light themes + legacy class aliases
+   ========================================================= */
+
+/* ── Google Fonts ─────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Design tokens — DARK (default) ──────────────────── */
+:root {
+  color-scheme: dark;
+
+  /* Surface */
+  --bg-base:       #0d0d0f;
+  --bg-surface:    #131318;
+  --bg-raised:     #1a1a22;
+  --bg-overlay:    #22222e;
+  --bg-hover:      #2a2a38;
+
+  /* Border */
+  --border-subtle: rgba(255,255,255,0.07);
+  --border-muted:  rgba(255,255,255,0.12);
+  --border-default:rgba(255,255,255,0.18);
+
+  /* Text */
+  --text-primary:  #e8e8f0;
+  --text-secondary:#9898b0;
+  --text-muted:    #5a5a72;
+  --text-heading:  #f0c060;   /* amber-ish — D2 gold */
+
+  /* Accent */
+  --accent:        #c8922a;
+  --accent-bright: #f0c060;
+  --accent-dim:    #7a5518;
+
+  /* Item quality colours */
+  --col-set:       #00e676;   /* green */
+  --col-unq:       #c8a060;   /* tan/gold */
+  --col-rare:      #d8c060;
+  --col-magic:     #6080ff;
+  --col-rune:      #f0a030;
+  --col-tc:        #40c0ff;
+  --col-norm:      var(--text-primary);
+  --col-low:       var(--text-muted);
+
+  /* Stat/resist badge colours */
+  --res-fire:      #c0433a;
+  --res-cold:      #5068b0;
+  --res-ltng:      #c8c04a;
+  --res-psn:       #3ab03a;
+  --res-phys:      #8a7860;
+  --res-magic:     #a06828;
+  --res-all-l:     #b04040;
+  --res-all-r:     #3a7030;
+
+  /* Row stripe backgrounds — each act has a tint */
+  --row-b1: #0e1020;  /* blue  act1 */
+  --row-b2: #131830;
+  --row-g1: #0a1410;  /* green act3 */
+  --row-g2: #0f1e14;
+  --row-r1: #150a0a;  /* red   act4 */
+  --row-r2: #200f0f;
+  --row-k1: #111114;  /* grey  act5 */
+  --row-k2: #18181e;
+  --row-y1: #181208;  /* amber act2 */
+  --row-y2: #231a08;
+
+  /* Gem column backgrounds */
+  --gem-am: #1a0a1a;
+  --gem-di: #141414;
+  --gem-em: #0a140a;
+  --gem-ru: #140a0a;
+  --gem-sa: #0a0a18;
+  --gem-sk: #0d0d0d;
+  --gem-to: #141400;
+
+  /* Header border colours by act */
+  --hdr-b: #3a5a9a;
+  --hdr-g: #3a8a3a;
+  --hdr-r: #9a3a3a;
+  --hdr-k: rgba(255,255,255,0.25);
+  --hdr-y: #9a8230;
+
+  /* Tier pill colours */
+  --tier-s:  #ff8080; --tier-s-txt: #000;
+  --tier-a:  #ffb060; --tier-a-txt: #000;
+  --tier-b:  #ffe060; --tier-b-txt: #000;
+  --tier-c:  #a0f060; --tier-c-txt: #000;
+  --tier-d:  #60d060; --tier-d-txt: #000;
+  --tier-f:  #60a0ff; --tier-f-txt: #000;
+
+  /* alvl colours */
+  --alvl83: #60d060;
+  --alvl84: #60b0f0;
+  --alvl85: #f05050;
+
+  /* Misc */
+  --shadow-card: 0 2px 12px rgba(0,0,0,0.6);
+  --radius:      6px;
+}
+
+/* ── Design tokens — LIGHT ────────────────────────────── */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-base:       #f4f4f8;
+  --bg-surface:    #ffffff;
+  --bg-raised:     #eeeef4;
+  --bg-overlay:    #e4e4ec;
+  --bg-hover:      #d8d8e8;
+
+  --border-subtle: rgba(0,0,0,0.10);
+  --border-muted:  rgba(0,0,0,0.16);
+  --border-default:rgba(0,0,0,0.24);
+
+  --text-primary:  #1a1a28;
+  --text-secondary:#4a4a68;
+  --text-muted:    #9090b0;
+  --text-heading:  #8a5a10;
+
+  --accent:        #9a6010;
+  --accent-bright: #c07820;
+  --accent-dim:    #e8c880;
+
+  --col-set:       #1a9a40;
+  --col-unq:       #8a5820;
+  --col-rare:      #7a6010;
+  --col-magic:     #3050cc;
+  --col-rune:      #b07010;
+  --col-tc:        #1860b0;
+  --col-norm:      var(--text-primary);
+  --col-low:       var(--text-muted);
+
+  --res-fire:      #c02020;
+  --res-cold:      #3050a0;
+  --res-ltng:      #806800;
+  --res-psn:       #207020;
+  --res-phys:      #604830;
+  --res-magic:     #804010;
+
+  --row-b1: #dce6ff;
+  --row-b2: #cdd9ff;
+  --row-g1: #d8f4d8;
+  --row-g2: #c6ecc6;
+  --row-r1: #ffd8dc;
+  --row-r2: #ffc8cc;
+  --row-k1: #e4e4ec;
+  --row-k2: #d6d6e2;
+  --row-y1: #faecd8;
+  --row-y2: #f4ddb8;
+
+  --gem-am: #ead8f2;
+  --gem-di: #dcdce4;
+  --gem-em: #d4ecd4;
+  --gem-ru: #f2d4d8;
+  --gem-sa: #d4d4f4;
+  --gem-sk: #dcdce0;
+  --gem-to: #f0f0c0;
+
+  --hdr-b: #6080c8;
+  --hdr-g: #40a040;
+  --hdr-r: #c04040;
+  --hdr-k: rgba(0,0,0,0.30);
+  --hdr-y: #c09820;
+
+  /* alvl colours — stronger for light bg */
+  --alvl83: #2a8a2a;
+  --alvl84: #1060b0;
+  --alvl85: #c02020;
+
+  --shadow-card: 0 2px 12px rgba(0,0,0,0.10);
+}
+
+/* ── Base reset / globals ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-text-size-adjust: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+code, pre, .font-mono, table.head, .runetip {
+  font-family: 'JetBrains Mono', 'Consolas', 'Menlo', monospace;
+}
+
+a { color: var(--accent-bright); font-weight: 500; text-decoration: none; }
+a:hover { text-decoration: underline; color: var(--accent-bright); }
+a:visited { color: var(--col-set); }
+
+th {
+  color: var(--text-heading);
+  white-space: pre;
+  font-weight: 600;
+}
+
+table, tr {
+  margin: 0; padding: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td { margin: 0; padding: 0; }
+
+table.head {
+  border-collapse: collapse;
+  margin: 0; padding: 0;
+  text-align: left;
+}
+
+/* ── Row stripe classes ───────────────────────────────── */
+.b11 { background-color: var(--row-b1); }
+.b22 { background-color: var(--row-b2); }
+.g11 { background-color: var(--row-g1); }
+.g22 { background-color: var(--row-g2); }
+.r11 { background-color: var(--row-r1); }
+.r22 { background-color: var(--row-r2); }
+.k11 { background-color: var(--row-k1); }
+.k22 { background-color: var(--row-k2); }
+.k00 { background-color: var(--bg-base); }
+.y11 { background-color: var(--row-y1); }
+.y22 { background-color: var(--row-y2); }
+
+/* purple (misc / WotR) */
+.m11 { background-color: color-mix(in srgb, var(--row-b1) 60%, var(--row-r1) 40%); }
+.m22 { background-color: color-mix(in srgb, var(--row-b2) 60%, var(--row-r2) 40%); }
+.p11 { background-color: color-mix(in srgb, var(--row-b1) 60%, var(--row-r1) 40%); }
+.p22 { background-color: color-mix(in srgb, var(--row-b2) 60%, var(--row-r2) 40%); }
+
+/* ── Table header border colours (top/bottom) ─────────── */
+tr.bt { border-top:    1px solid var(--hdr-b); }
+tr.bb { border-bottom: 1px solid var(--hdr-b); }
+tr.gt { border-top:    1px solid var(--hdr-g); }
+tr.gb { border-bottom: 1px solid var(--hdr-g); }
+tr.rt { border-top:    1px solid var(--hdr-r); }
+tr.rb { border-bottom: 1px solid var(--hdr-r); }
+tr.kt { border-top:    1px solid var(--hdr-k); }
+tr.kb { border-bottom: 1px solid var(--hdr-k); }
+tr.yt { border-top:    1px solid var(--hdr-y); }
+tr.yb { border-bottom: 1px solid var(--hdr-y); }
+tr.raret { border-top:    1px solid var(--col-rare); }
+tr.rareb { border-bottom: 1px solid var(--col-rare); }
+tr.unqt  { border-top:    1px solid var(--col-unq); }
+tr.unqb  { border-bottom: 1px solid var(--col-unq); }
+
+/* ── Item quality text colours ───────────────────────── */
+span.set,  .set  { color: var(--col-set); }
+span.unq,  .unq  { color: var(--col-unq); }
+span.rare, .rare { color: var(--col-rare); }
+span.magic,.magic{ color: var(--col-magic); }
+span.rune, .rune { color: var(--col-rune); }
+span.tc,   .tc   { color: var(--col-tc); }
+span.norm, .norm { color: var(--col-norm); }
+span.low,  .low  { color: var(--col-low); }
+
+/* ── Resist / stat badge spans ───────────────────────── */
+span.resf { background-color: var(--res-fire);  color: #fff; padding: 0 3px; border-radius: 3px; font-weight: 600; }
+span.resc { background-color: var(--res-cold);  color: #fff; padding: 0 3px; border-radius: 3px; font-weight: 600; }
+span.resl { background-color: var(--res-ltng);  color: #000; padding: 0 3px; border-radius: 3px; font-weight: 600; }
+span.resp { background-color: var(--res-psn);   color: #fff; padding: 0 3px; border-radius: 3px; font-weight: 600; }
+span.resh { background-color: var(--res-phys);  color: #fff; padding: 0 3px; border-radius: 3px; font-weight: 600; }
+span.resm { background-color: var(--res-magic); color: #fff; padding: 0 3px; border-radius: 3px; font-weight: 600; }
+
+span.resa {
+  background-image: linear-gradient(to right, var(--res-all-l), var(--res-all-r));
+  color: #fff; padding: 0 3px; border-radius: 3px; font-weight: 600;
+}
+
+/* ── Stat span colours ───────────────────────────────── */
+span.fcr  { color: var(--col-tc); font-weight: 600; }
+span.fhr  { background-color: var(--res-cold); color: #fff; padding: 0 3px; border-radius: 3px; }
+span.fbr  { background-color: var(--res-fire); color: #fff; padding: 0 3px; border-radius: 3px; }
+span.ias  { color: var(--col-set); }
+span.mf   { color: #a060ff; font-weight: 700; }
+span.cb   { color: #f08030; }
+span.cbf  { color: var(--res-cold); font-weight: 700; }
+span.ds   { color: #d080d0; }
+span.ow   { color: var(--res-fire); }
+span.dr   { background-color: #107070; color: #fff; padding: 0 3px; border-radius: 3px; }
+span.cob  { background-color: #206880; color: #fff; padding: 0 3px; border-radius: 3px; }
+span.gold { color: #f0c000; }
+span.idr  { color: var(--col-tc); }
+span.n    { color: var(--col-tc); }
+span.note { color: #ffe060; font-style: italic; }
+span.noterune { color: var(--text-primary); }
+span.farm { color: var(--col-tc); }
+span.skill{ background-image: linear-gradient(to right, var(--col-tc), #0040a0); }
+span.x    { color: var(--col-tc); }
+span.y    { color: var(--accent-bright); }
+span.r    { color: var(--res-fire); }   /* red table header label */
+span.g    { color: var(--col-set); }    /* green table header label */
+span.b    { color: var(--col-tc); }     /* blue table header label */
+
+/* alvl colours */
+span.alvl83 { color: #60d060; font-weight: 700; }
+span.alvl84 { color: #60b0f0; font-weight: 700; }
+span.alvl85 { color: #f05050; font-weight: 700; }
+
+/* layout direction hints */
+span.l { color: #60c8f0; }
+span.c { color: #60d060; }
+
+/* Essences */
+span.twisted   { color: #6878d0; }
+span.charged   { color: #c89050; }
+span.burning   { color: #c05040; }
+span.festering { color: #20b060; }
+
+/* ── Gem column backgrounds ──────────────────────────── */
+.gemam { background-color: var(--gem-am); }
+.gemdi { background-color: var(--gem-di); }
+.gemem { background-color: var(--gem-em); }
+.gemru { background-color: var(--gem-ru); }
+.gemsa { background-color: var(--gem-sa); }
+.gemsk { background-color: var(--gem-sk); }
+.gemto { background-color: var(--gem-to); }
+
+/* ── Tier pills ──────────────────────────────────────── */
+.stier { background-color: var(--tier-s); color: var(--tier-s-txt); border-radius: 3px; padding: 0 4px; }
+.atier { background-color: var(--tier-a); color: var(--tier-a-txt); border-radius: 3px; padding: 0 4px; }
+.btier { background-color: var(--tier-b); color: var(--tier-b-txt); border-radius: 3px; padding: 0 4px; }
+.ctier { background-color: var(--tier-c); color: var(--tier-c-txt); border-radius: 3px; padding: 0 4px; }
+.dtier { background-color: var(--tier-d); color: var(--tier-d-txt); border-radius: 3px; padding: 0 4px; }
+.ftier { background-color: var(--tier-f); color: var(--tier-f-txt); border-radius: 3px; padding: 0 4px; }
+
+/* ── Class row backgrounds (breakpoints) ─────────────── */
+.zon { background-color: #0a1828; }
+.sin { background-color: #1a0808; }
+.bar { background-color: #181408; }
+.dru { background-color: #081808; }
+.nec { background-color: #141414; }
+.pal { background-color: #0a1828; }
+.sor { background-color: #080a20; }
+.war { background-color: #180818; }
+
+[data-theme="light"] .zon { background-color: #cddeff; }
+[data-theme="light"] .sin { background-color: #ffd8c0; }
+[data-theme="light"] .bar { background-color: #f8eec0; }
+[data-theme="light"] .dru { background-color: #c8ecc8; }
+[data-theme="light"] .nec { background-color: #e0daf0; }
+[data-theme="light"] .pal { background-color: #cddeff; }
+[data-theme="light"] .sor { background-color: #d4d4ff; }
+[data-theme="light"] .war { background-color: #f8cce8; }
+
+/* ── Holy Grail / rune selection state ───────────────── */
+.hge {
+  background-color: var(--bg-hover);
+  border: 1px solid var(--col-tc);
+  color: var(--col-rune);
+}
+.hgd {
+  background-color: var(--bg-base);
+  color: var(--accent-bright);
+  font-weight: normal;
+}
+.sel {
+  background-color: var(--bg-hover);
+  border: 1px solid var(--col-tc);
+  color: var(--col-rune);
+}
+.unsel {
+  background-color: var(--bg-base);
+  border: 1px solid transparent;
+  color: var(--col-rune);
+}
+.rws {
+  background-color: var(--bg-hover);
+  border: 1px solid var(--res-fire);
+  color: #fff;
+}
+.rwu {
+  background-color: var(--bg-base);
+  color: var(--accent-bright);
+}
+.mis { color: var(--res-fire); font-weight: 700; }
+.own { color: var(--col-set); font-weight: 700; }
+
+/* ── Guarantee badge (crafting) ──────────────────────── */
+.guarantee { color: var(--accent-bright); font-weight: 600; }
+
+/* ── Rune type label ─────────────────────────────────── */
+.runetype { color: var(--text-primary); font-weight: 700; }
+
+/* ── Runeword rune colour aliases ────────────────────── */
+span.rune_norm { color: var(--col-tc); }
+span.rune_nm   { color: #7070ff; }
+span.rune_hell { color: #60d0ff; }
+
+/* ── Hover-highlight rows ────────────────────────────── */
+tr:hover td { filter: brightness(1.18); }
+
+/* Preserve plain hover on tooltip rows (original used .tooltip, we use tr) */
+.tooltip { cursor: pointer; position: relative; display: inline-block; }
+.tooltip:hover { background-color: var(--bg-hover); }
+
+/* ── Misc utility ────────────────────────────────────── */
+.vatop { vertical-align: top; }
+.padd  { color: var(--text-primary); padding: 0 2px; }
+.padd5 { padding-left: 5px; }
+.padd15{ padding-left: 15px; }
+.pre   { white-space: pre; }
+
+span.rev { background-color: var(--text-primary); color: var(--bg-base); }
+span.rot90 { display: inline-block; vertical-align: text-bottom; transform: rotate(90deg); }
+
+/* ── Scrollbar (dark) ────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-surface); }
+::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Card / section container ────────────────────────── */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Focus ring ──────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 2px;
+}
+
+/* ── Images (wp/tz from original — not used in port but kept harmless) ── */
+div.wp { display: inline-block; width: 16px; height: 16px; }
+div.tz { display: inline-block; width: 16px; height: 16px; }

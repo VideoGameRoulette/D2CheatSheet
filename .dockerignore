@@ -1,0 +1,24 @@
+# Dependencies
+frontend/node_modules
+frontend/.next
+frontend/out
+node_modules
+
+# Build outputs
+.next
+out
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Misc
+*.md
+*.log
+.DS_Store
