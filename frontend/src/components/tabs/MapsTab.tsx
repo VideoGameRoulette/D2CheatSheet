@@ -273,7 +273,7 @@ const ACT_TAB_COLORS: Record<string, { active: string; border: string }> = {
 const ALVL85_TAB_COLOR = { active: "var(--col-set)", border: "var(--col-set)" };
 
 function AlvlSection() {
-  const [activeTab, setActiveTab] = useState<ActTab>({ kind: "act", act: 1 });
+  const [activeTab, setActiveTab] = useState<ActTab>({ kind: "act", act: 1, cls: "b" });
 
   const isAlvl85 = activeTab.kind === "alvl85";
   const actData  = activeTab.kind === "act" ? AREAS.find(a => a.act === activeTab.act)! : null;
@@ -320,7 +320,7 @@ function AlvlSection() {
           return (
             <button
               key={a.act}
-              onClick={() => setActiveTab({ kind: "act", act: a.act })}
+              onClick={() => setActiveTab({ kind: "act", act: a.act, cls: a.cls })}
               className="px-4 py-1.5 text-xs font-semibold rounded-t transition-all"
               style={tabStyle(isActive, ACT_TAB_COLORS[a.cls])}
             >
